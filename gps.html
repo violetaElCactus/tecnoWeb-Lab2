@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<p>presiona el botón para ver tus coordenadas.</p>
+
+		<button onclick="getLocation()">soy un botón</button>
+
+		<p id="holi"></p>
+
+		<script>
+			var x = document.getElementById("holi");
+
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.watchPosition(showPosition);
+				} else { 
+					x.innerHTML = "Geolocalización no disponible en este buscador";}
+				
+				}
+			
+			function safeLocation(x,y){
+				localStorage.setItem("pos", "<br>Latitud: " + x + "<br>Latitud: " + y);
+			}
+			
+			function showPosition(position) {
+				x.innerHTML="Latitud actual: " + position.coords.latitude + 
+				"<br>Longitud actual: " + position.coords.longitude + "<br><br>sesion anterior: "+ localStorage.getItem("pos") ;
+				safeLocation(position.coords.latitude, position.coords.longitude);
+			}
+		</script>
+
+	</body>
+</html>

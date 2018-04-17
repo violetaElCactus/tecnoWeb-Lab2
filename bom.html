@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<Head>
+		<h1> Lectura de BOM y objetos </h1>
+	</Head>
+	<style>
+		div {
+			div.backgroundcolor = purple;		
+		}	
+	</style>	
+	<body>
+		<div>
+			<p id="demo"></p>
+			<p id="demos"></p>
+			<p id="demoss"></p>
+			<p id="pantalla"></p>
+			<p id="objeto"></p>
+			<p id="objeto1"></p>
+			<p id="objeto2"></p>
+			<p id="objeto3"></p>
+			<p id="objeto4"></p>
+			<script>
+				document.getElementById("demo").innerHTML = 
+				"El URL completo de esta pagina es:<br>" + window.location.href;
+		
+				document.getElementById("demos").innerHTML = 
+				"El número del puerto URL de esta página es: " + window.location.pathname;
+		
+				document.getElementById("demoss").innerHTML = 
+				"El s.o. que está usando es:"+navigator.oscpu;
+			</script>
+			<script>
+				document.getElementById("pantalla").innerHTML =
+				"Screen Height: " + screen.height + "   Screen Width: " + screen.width  + "   Screen resolution: " + 					 				window.screen.availHeight +"x" +
+				window.screen.availWidth;
+			</script>
+			<script>
+				var animal = {tipo:"Gato", color:"negro", nombre:"sombra",informacion : function() {
+					return this.nombre + " es un " +this.tipo + " de color " + this.color;}, habilidad : function() {if( this.tipo == 					"Gato") 
+					return "arañazo"
+					else return "embestida";}};
+				document.getElementById("objeto").innerHTML = 
+				"el animal es un: " + animal.tipo + " y es de color: " + animal.color;
+				document.getElementById("objeto1").innerHTML = 
+				animal.informacion();
+				document.getElementById("objeto2").innerHTML = 
+				"Su habilidad es: " +animal.habilidad();
+				animal.ojos = "verdes";
+				delete animal.nombre;
+				document.getElementById("objeto3").innerHTML = 
+				"el animal tiene ojos color: " + animal.ojos + " y su nombre es: " + animal.nombre;
+				animal.caracteristicas = function() {return this.nombre + ",es un " + this.tipo + ", con ojos color " + this.ojos};
+				document.getElementById("objeto4").innerHTML = 
+				animal.caracteristicas();
+			</script>
+		
+		</div>
+
+	</body>
+</html>
